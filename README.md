@@ -63,10 +63,10 @@ git clone https://github.com/ryuu-script/TrackIT.git
 3. Start **MySQL**
 
 ### 3. Set Up the Database
-
+ 
 1. Open your browser and go to `http://localhost/phpmyadmin`
-2. Create a new database (e.g., `trackit_db`)
-3. The included PHP setup file will automatically populate the database with the required tables and initial values
+2. Create a new database named `trackit_db`
+> That's all you need to do in phpMyAdmin. The rest is handled automatically.
 
 ### 4. Launch the Application
 
