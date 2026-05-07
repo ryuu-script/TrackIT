@@ -1,3 +1,5 @@
+<?php require_once '../component/setup.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
