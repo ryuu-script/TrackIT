@@ -1,3 +1,6 @@
+
+<!-- WALAY MANGHILABOT ANI KAY MAO NI ANG GA ADD UG TEST VALUES SA ATONG DATABASE -->
+
 <?php
 $host = "localhost";
 $user = "root";

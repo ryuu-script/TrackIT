@@ -13,7 +13,6 @@
 
 <body>
 
-    <!-- LOADING SCREEN -->
     <div id="loader-container">
         <div class="loader-box">
 
@@ -28,7 +27,6 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div id="intro-wrapper" style="display: none;">
 
         <img src="../image/sinoyTechLogo.png"
