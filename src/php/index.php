@@ -1,4 +1,4 @@
-<?php require_once '../component/setup.php'; ?>
+<?php require_once '../php/component/setup.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

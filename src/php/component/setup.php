@@ -7,16 +7,8 @@ $dbname = "trackit_db";
 $conn = new mysqli($host, $user, $pass, $dbname);
 
 if ($conn->connect_error) {
-    die("<p style='color:red;'>Connection failed: " . $conn->connect_error . "</p>");
+    die();
 }
-
-$result = $conn->query("SELECT COUNT(*) as count FROM users"); // Para dili mag doble na kung naay sulod ang database
-$row = $result->fetch_assoc();
-if ($row['count'] > 0) {
-    return;
-}
-
-echo "<h2>TrackIT Setup</h2>";
 
 // ──────────────────────────────────────────────
 // CREATE USERS TABLE
@@ -38,6 +30,12 @@ $conn->query("CREATE TABLE IF NOT EXISTS assets (
     status ENUM('available', 'borrowed', 'under_maintenance') NOT NULL DEFAULT 'available'
 )");
 
+$result = $conn->query("SELECT COUNT(*) as count FROM users"); // Para dili mag doble na kung naay sulod ang database
+$row = $result->fetch_assoc();
+if ($row['count'] > 0) {
+    return;
+}
+
 // ──────────────────────────────────────────────
 // SEED USERS
 // ──────────────────────────────────────────────
@@ -48,20 +46,11 @@ $users = [
 
 $userStmt = $conn->prepare("INSERT IGNORE INTO users (username, password, role) VALUES (?, ?, ?)");
 
-echo "<h3>Users</h3><ul>";
 foreach ($users as [$username, $hashed, $role]) {
     $userStmt->bind_param("sss", $username, $hashed, $role);
-    if ($userStmt->execute()) {
-        if ($userStmt->affected_rows > 0) {
-            echo "<li>Added user: <strong>$username</strong> ($role)</li>";
-        } else {
-            echo "<li>Skipped: <strong>$username</strong> already exists</li>";
-        }
-    } else {
-        echo "<li>Failed to add <strong>$username</strong>: " . $userStmt->error . "</li>";
-    }
+    $userStmt->execute();
 }
-echo "</ul>";
+
 $userStmt->close();
 
 // ──────────────────────────────────────────────
@@ -80,18 +69,11 @@ $assets = [
 
 $assetStmt = $conn->prepare("INSERT INTO assets (asset_name, type, status) VALUES (?, ?, ?)");
 
-echo "<h3>Assets</h3><ul>";
 foreach ($assets as [$name, $type, $status]) {
     $assetStmt->bind_param("sss", $name, $type, $status);
-    if ($assetStmt->execute()) {
-        echo "<li>Added: <strong>$name</strong> — $type / $status</li>";
-    } else {
-        echo "<li>Failed to add <strong>$name</strong>: " . $assetStmt->error . "</li>";
-    }
+    $assetStmt->execute();
 }
-echo "</ul>";
-$assetStmt->close();
 
+$assetStmt->close();
 $conn->close();
-echo "<p><strong>Setup complete!</strong> You can now delete this file.</p>";
 ?>
