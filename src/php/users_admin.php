@@ -24,4 +24,7 @@ require_once '../php/component/navbar.php';
     <!-- Start coding from here -->
     
 </body>
+
+<?php require_once '../php/component/footer.php'; ?>
+
 </html>
