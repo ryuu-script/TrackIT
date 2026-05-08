@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="submit-btn">Login</button>
 
         <div class="no-account">
-            <p>No account? <a href="#">Register</a></p>
+            <p>No account? <a href="/TrackIT/src/php/REGISTER/reg_verify_admin.php">Register</a></p>
         </div>
     </form>
  

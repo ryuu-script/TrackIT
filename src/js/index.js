@@ -35,9 +35,9 @@ const interval = setInterval(() => {
                     window.location.href = "/TrackIT/src/php/LOGIN/enter_cred.php";
                 }, 500); 
 
-            }, 3500); // Delay for Sinoy Technologies intro
+            }, 2000); // Delay for Sinoy Technologies intro
 
-        }, 200); // Delay for progress bar
+        }, 100); // Delay for progress bar
     }
     
 }, 15);
