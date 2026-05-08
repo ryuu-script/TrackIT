@@ -1,6 +1,6 @@
 const REDIRECT_URL = "/TrackIT/src/php/LOGIN/enter_cred.php";
 const COUNTDOWN_SEC = 5;
-const SOUND_URL = "/TrackIT/src/audio/success.mp3"; 
+const SOUND_URL = "/TrackIT/src/audio/success.wav"; 
 
 const audio = new Audio(SOUND_URL);
 audio.play().catch(err => {
