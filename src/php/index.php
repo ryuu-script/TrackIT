@@ -34,7 +34,7 @@
              alt="mark_sinoy's logo">
 
         <div class="intro-description">
-            <h1><strong>Powered by:</strong> Sinoy Technologies.</h1>
+            <h1><strong>Sinoy Technologies</strong> </h1>
         </div>
 
     </div>
