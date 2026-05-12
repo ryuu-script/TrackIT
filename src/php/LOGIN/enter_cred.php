@@ -1,6 +1,14 @@
 <?php
 session_start();
-require_once '../component/db_connect.php'; 
+require_once '../component/db_connect.php';
+
+/* =========================
+   PREVENT BACK BUTTON CACHE
+   ========================= */
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -17,11 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $account['username'];
         $_SESSION['role']     = $account['role'];
 
-        if ($account['role'] === 'admin') {
-            header("Location: ../dashboard.php");
-        } else {
-            header("Location: ../dashboard.php");
-        }
+        header("Location: ../dashboard.php");
         exit();
 
     } else {
@@ -41,33 +45,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <title>TrackIT Login</title>
 </head>
+
 <body>
-    <div class="login-wrapper">
-    
-    <img src="/TrackIT/src/image/TrackIT_logo.png" id="sinoy-logo" alt="hello">
-    <form action="enter_cred.php" method="POST">
+<div class="login-wrapper">
+
+    <img src="/TrackIT/src/image/TrackIT_logo.png" id="sinoy-logo" alt="logo">
+
+    <!-- FIXED FORM -->
+    <form action="enter_cred.php" method="POST" autocomplete="off">
         <h1>Login</h1>
+
         <div class="input-box">
-            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Username" autocomplete="off" required>
             <i class='bx bxs-user'></i>
         </div>
 
         <div class="input-box">
-            <input type="password" name="password" placeholder="Password" required>
-            <i class='bx bxs-lock' ></i>
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+            <i class='bx bxs-lock'></i>
         </div>
 
         <?php if (isset($error)): ?>
-            <p style="color: red; font-size: 14px; text-align: center;"><?= $error ?></p>
-        <?php endif; ?><br>
+            <p style="color: red; font-size: 14px; text-align: center;">
+                <?= $error ?>
+            </p>
+        <?php endif; ?>
+
+        <br>
+
         <button type="submit" class="submit-btn">Login</button>
 
         <div class="no-account">
             <p>No account? <a href="/TrackIT/src/php/REGISTER/reg_verify_admin.php">Register</a></p>
         </div>
     </form>
- 
-    </div>
- 
+
+</div>
+
+<script>
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
+</script>
+
 </body>
 </html>
