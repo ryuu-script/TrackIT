@@ -33,12 +33,12 @@ html, body {
 }
 
 .assets-scroll {
-    overflow-x: auto; 
+    overflow-x: auto;
 }
 
 .assets-table {
     width: 100%;
-    min-width: 700px; 
+    min-width: 700px;
     border-collapse: collapse;
 }
 
@@ -88,7 +88,6 @@ html, body {
     font-size: 13px;
 }
 
-/* Shared dot base */
 .assets-dot {
     width: 8px;
     height: 8px;
@@ -96,13 +95,11 @@ html, body {
     flex-shrink: 0;
 }
 
-/* Admin → pink/red, matching users-role-admin */
 .assets-dot.dot-admin {
     background: #ed8796;
     box-shadow: 0 0 6px rgba(237, 135, 150, 0.7);
 }
 
-/* User → blue, matching users-role-user */
 .assets-dot.dot-user {
     background: #85c1dc;
     box-shadow: 0 0 6px rgba(133, 193, 220, 0.7);
@@ -165,7 +162,6 @@ html, body {
     vertical-align: middle;
 }
 
-/* Highlight row while being edited */
 .assets-table tr.row-editing {
     background: rgba(150, 60, 255, 0.06);
 }
@@ -290,7 +286,6 @@ select.cell-input option {
     transform: scale(0.92);
 }
 
-/* Edit — purple ghost */
 .edit-btn {
     background: rgba(150, 60, 255, 0.1);
     border-color: rgba(185, 100, 255, 0.25);
@@ -301,7 +296,6 @@ select.cell-input option {
     border-color: rgba(185, 100, 255, 0.5);
 }
 
-/* Confirm / checkmark — green ghost */
 .confirm-btn {
     background: rgba(108, 207, 152, 0.1);
     border-color: rgba(108, 207, 152, 0.3);
@@ -312,7 +306,6 @@ select.cell-input option {
     border-color: rgba(108, 207, 152, 0.55);
 }
 
-/* Delete — red ghost */
 .delete-btn {
     background: rgba(237, 135, 150, 0.1);
     border-color: rgba(237, 135, 150, 0.25);
@@ -323,7 +316,6 @@ select.cell-input option {
     border-color: rgba(237, 135, 150, 0.5);
 }
 
-/* Cancel / X — muted ghost */
 .cancel-btn {
     background: rgba(200, 170, 230, 0.07);
     border-color: rgba(185, 100, 255, 0.2);
@@ -374,6 +366,10 @@ select.cell-input option {
     z-index: 9999;
 }
 
+.users-modal.show {
+    display: flex !important;
+}
+
 .users-modal-box {
     background: rgba(18, 6, 38, 1);
     padding: 25px;
@@ -391,7 +387,9 @@ select.cell-input option {
     margin-bottom: 16px;
 }
 
-/* INPUTS */
+/* =========================
+   MODAL INPUTS
+========================= */
 
 .users-input-group {
     margin-bottom: 12px;
@@ -412,7 +410,7 @@ select.cell-input option {
     padding: 10px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(185, 100, 255, 0.25);
-    color: white;
+    color: rgb(220, 175, 255);
     border-radius: 8px;
     outline: none;
     font-family: 'Rajdhani', sans-serif;
@@ -421,12 +419,30 @@ select.cell-input option {
     box-sizing: border-box;
 }
 
+.users-input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgb(185,100,255)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.users-input-group select option {
+    background: rgba(18, 6, 38, 1);
+    color: rgb(220, 175, 255);
+}
+
 .users-input-group input:focus,
 .users-input-group select:focus {
     border-color: rgb(150, 60, 255);
+    box-shadow: 0 0 0 2px rgba(150, 60, 255, 0.2);
 }
 
-/* ACTIONS */
+/* =========================
+   MODAL ACTIONS
+========================= */
 
 .users-modal-actions {
     display: flex;
@@ -465,6 +481,41 @@ select.cell-input option {
 
 .users-cancel-btn:hover {
     background: rgba(185, 100, 255, 0.08);
+}
+
+.users-modal-actions button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* Cancel button (1st button) */
+.users-modal-actions button[type="button"] {
+    background: transparent;
+    border: 1px solid rgba(185, 100, 255, 0.25);
+    color: rgb(220, 175, 255);
+}
+
+.users-modal-actions button[type="button"]:hover {
+    background: rgba(185, 100, 255, 0.08);
+}
+
+/* Create button (submit) */
+.users-modal-actions button[type="submit"] {
+    background: rgb(150, 60, 255);
+    border: none;
+    color: white;
+}
+
+.users-modal-actions button[type="submit"]:hover {
+    background: rgb(175, 90, 255);
 }
 
 /* =========================

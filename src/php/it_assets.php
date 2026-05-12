@@ -62,6 +62,15 @@ if ($isAdmin && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $type = trim($_POST['type']);
         $status = normalizeStatus($_POST['status'] ?? 'available');
 
+        // CHECK DUPLICATE
+        $check = $pdo->prepare("SELECT COUNT(*) FROM assets WHERE asset_name = ?");
+        $check->execute([$name]);
+
+        if ($check->fetchColumn() > 0) {
+            echo "<script>alert('Asset name already exists!'); window.history.back();</script>";
+            exit();
+        }
+
         $stmt = $pdo->prepare("
             INSERT INTO assets (asset_name, type, status)
             VALUES (?, ?, ?)
