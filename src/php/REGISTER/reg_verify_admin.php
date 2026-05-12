@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($account && password_verify($password, $account['password'])) {
 
         if ($account['role'] === 'user') {
-            $error = "Access denied. Dili mani admin.";
+            $error = "Access denied. This user is not an admin.";
         } else {
             $_SESSION['user_id']  = $account['id'];
             $_SESSION['username'] = $account['username'];
