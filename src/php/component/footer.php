@@ -62,20 +62,22 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=DM+Sans:wght@300;400&display=swap');
 
-    .site-footer {
-        width: 100%;
-        padding: 18px 40px 14px;
-        background: linear-gradient(180deg, rgba(10, 4, 22, 0.92) 0%, rgba(18, 6, 38, 0.97) 100%);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(140, 60, 220, 0.25);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: 100;
-        overflow: hidden;
-        font-family: 'DM Sans', sans-serif;
-    }
+.site-footer {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 18px 40px 14px;
+    background: linear-gradient(180deg, rgba(10, 4, 22, 0.92) 0%, rgba(18, 6, 38, 0.97) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(140, 60, 220, 0.25);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+}
 
     /* Animated top glow bar */
     .footer-glow-bar {
