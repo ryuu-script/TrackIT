@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=DM+Sans:wght@300;400&display=swap');
+
+/* =========================
+   GLOBAL
+========================= */
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(10, 4, 22, 1) 0%,
+        rgba(18, 6, 38, 1) 50%,
+        rgba(10, 4, 22, 1) 100%
+    ) !important;
+
+    font-family: 'Rajdhani', sans-serif;
+    color: rgb(220, 175, 255);
+
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================
+   WRAPPER
+========================= */
+
+.assets-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+}
+
+.assets-scroll {
+    overflow-x: auto; 
+}
+
+.assets-table {
+    width: 100%;
+    min-width: 700px; 
+    border-collapse: collapse;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.assets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 25px;
+}
+
+.assets-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.assets-header h1 span {
+    color: rgb(150, 60, 255);
+}
+
+.assets-header p {
+    font-size: 12px;
+    color: rgba(200, 170, 230, 0.6);
+}
+
+/* =========================
+   BADGE + DOT
+========================= */
+
+.assets-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 16px;
+
+    border: 1px solid rgba(185, 100, 255, 0.25);
+    border-radius: 20px;
+
+    background: rgba(185, 100, 255, 0.05);
+
+    font-size: 13px;
+}
+
+/* Shared dot base */
+.assets-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Admin → pink/red, matching users-role-admin */
+.assets-dot.dot-admin {
+    background: #ed8796;
+    box-shadow: 0 0 6px rgba(237, 135, 150, 0.7);
+}
+
+/* User → blue, matching users-role-user */
+.assets-dot.dot-user {
+    background: #85c1dc;
+    box-shadow: 0 0 6px rgba(133, 193, 220, 0.7);
+}
+
+/* =========================
+   TABLE AREA
+========================= */
+
+.assets-log {
+    background: rgba(185, 100, 255, 0.05);
+    border: 1px solid rgba(185, 100, 255, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.assets-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(185, 100, 255, 0.15);
+}
+
+.assets-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.assets-scroll {
+    overflow: hidden;
+}
+
+.assets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.assets-table th,
+.assets-table td {
+    padding: 14px;
+    text-align: left;
+}
+
+.assets-table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(200, 170, 230, 0.7);
+    border-bottom: 1px solid rgba(185, 100, 255, 0.15);
+}
+
+.assets-table td {
+    border-bottom: 1px solid rgba(185, 100, 255, 0.08);
+    vertical-align: middle;
+}
+
+/* Highlight row while being edited */
+.assets-table tr.row-editing {
+    background: rgba(150, 60, 255, 0.06);
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.type-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(150, 60, 255, 0.1);
+    border: 1px solid rgba(185, 100, 255, 0.2);
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.status-available {
+    background: rgba(133, 193, 220, 0.12);
+    color: #85c1dc;
+}
+
+.status-borrowed {
+    background: rgba(255, 200, 100, 0.12);
+    color: #f5c96a;
+}
+
+.status-unavailable {
+    background: rgba(237, 135, 150, 0.12);
+    color: #ed8796;
+}
+
+.status-under-maintenance {
+    background: rgba(255, 165, 50, 0.12);
+    color: #ffaa44;
+}
+
+/* =========================
+   INLINE EDIT INPUTS
+========================= */
+
+.cell-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(185, 100, 255, 0.35);
+    border-radius: 8px;
+    color: rgb(220, 175, 255);
+    padding: 7px 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    max-width: 180px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cell-input:focus {
+    border-color: rgb(150, 60, 255);
+    box-shadow: 0 0 0 2px rgba(150, 60, 255, 0.2);
+}
+
+.cell-input.input-error {
+    border-color: #ed8796;
+    box-shadow: 0 0 0 2px rgba(237, 135, 150, 0.2);
+    animation: shake 0.3s ease;
+}
+
+select.cell-input {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgb(185,100,255)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+select.cell-input option {
+    background: rgba(18, 6, 38, 1);
+    color: rgb(220, 175, 255);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%       { transform: translateX(-4px); }
+    75%       { transform: translateX(4px); }
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+
+    font-size: 16px;
+    line-height: 1;
+}
+
+.action-btn:active {
+    transform: scale(0.92);
+}
+
+/* Edit — purple ghost */
+.edit-btn {
+    background: rgba(150, 60, 255, 0.1);
+    border-color: rgba(185, 100, 255, 0.25);
+    color: rgb(185, 100, 255);
+}
+.edit-btn:hover {
+    background: rgba(150, 60, 255, 0.22);
+    border-color: rgba(185, 100, 255, 0.5);
+}
+
+/* Confirm / checkmark — green ghost */
+.confirm-btn {
+    background: rgba(108, 207, 152, 0.1);
+    border-color: rgba(108, 207, 152, 0.3);
+    color: #6ecf98;
+}
+.confirm-btn:hover {
+    background: rgba(108, 207, 152, 0.22);
+    border-color: rgba(108, 207, 152, 0.55);
+}
+
+/* Delete — red ghost */
+.delete-btn {
+    background: rgba(237, 135, 150, 0.1);
+    border-color: rgba(237, 135, 150, 0.25);
+    color: #ed8796;
+}
+.delete-btn:hover {
+    background: rgba(237, 135, 150, 0.2);
+    border-color: rgba(237, 135, 150, 0.5);
+}
+
+/* Cancel / X — muted ghost */
+.cancel-btn {
+    background: rgba(200, 170, 230, 0.07);
+    border-color: rgba(185, 100, 255, 0.2);
+    color: rgba(200, 170, 230, 0.7);
+}
+.cancel-btn:hover {
+    background: rgba(200, 170, 230, 0.15);
+    border-color: rgba(185, 100, 255, 0.4);
+}
+
+/* =========================
+   ADD BUTTON
+========================= */
+
+.assets-add-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+
+    background: rgba(150, 60, 255, 0.15);
+    border: 1px solid rgba(185, 100, 255, 0.3);
+
+    color: rgb(220, 175, 255);
+
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.assets-add-btn:hover {
+    background: rgba(150, 60, 255, 0.25);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.users-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none !important;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(10, 4, 22, 0.85);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.users-modal-box {
+    background: rgba(18, 6, 38, 1);
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid rgba(185, 100, 255, 0.3);
+    width: 360px;
+}
+
+.users-modal-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(185, 100, 255);
+    margin-bottom: 16px;
+}
+
+/* INPUTS */
+
+.users-input-group {
+    margin-bottom: 12px;
+}
+
+.users-input-group label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 170, 230, 0.6);
+    margin-bottom: 5px;
+}
+
+.users-input-group input,
+.users-input-group select {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(185, 100, 255, 0.25);
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.users-input-group input:focus,
+.users-input-group select:focus {
+    border-color: rgb(150, 60, 255);
+}
+
+/* ACTIONS */
+
+.users-modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.users-save-btn,
+.users-cancel-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.users-save-btn {
+    background: rgb(150, 60, 255);
+    border: none;
+    color: white;
+}
+
+.users-save-btn:hover {
+    background: rgb(175, 90, 255);
+}
+
+.users-cancel-btn {
+    background: transparent;
+    border: 1px solid rgba(185, 100, 255, 0.25);
+    color: rgb(220, 175, 255);
+}
+
+.users-cancel-btn:hover {
+    background: rgba(185, 100, 255, 0.08);
+}
+
+/* =========================
+   SCROLLBAR HIDE
+========================= */
+
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }

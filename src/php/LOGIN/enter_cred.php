@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$username]);
     $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($account && $password === $account['password']) {
+    if ($account && password_verify($password, $account['password'])) {
 
         $_SESSION['user_id']  = $account['id'];
         $_SESSION['username'] = $account['username'];
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="submit-btn">Login</button>
 
         <div class="no-account">
-            <p>No account? <a href="#">Register</a></p>
+            <p>No account? <a href="/TrackIT/src/php/REGISTER/reg_verify_admin.php">Register</a></p>
         </div>
     </form>
  

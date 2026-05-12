@@ -1,3 +1,5 @@
+<?php require_once '../php/component/setup.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +13,6 @@
 
 <body>
 
-    <!-- LOADING SCREEN -->
     <div id="loader-container">
         <div class="loader-box">
 
@@ -26,7 +27,6 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div id="intro-wrapper" style="display: none;">
 
         <img src="../image/sinoyTechLogo.png"
@@ -34,7 +34,7 @@
              alt="mark_sinoy's logo">
 
         <div class="intro-description">
-            <h1><strong>Powered by:</strong> Sinoy Technologies.</h1>
+            <h1><strong>Sinoy Technologies</strong> </h1>
         </div>
 
     </div>

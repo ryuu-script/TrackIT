@@ -1,66 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&family=DM+Sans:wght@300;400&display=swap');
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #0d0914;
-    padding: 0 25px;
-    height: 65px;
     position: sticky;
     top: 20px;
     z-index: 999;
-    border-radius: 40px;
-    border: 3px solid #2d1f5e;
-    box-shadow: 0 8px 32px rgba(125, 59, 246, 0.2);
 
-    /* Floating effect */
     width: 95%;
     margin: 20px auto 0 auto;
+    padding: 0 35px;
+    height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: 'DM Sans', sans-serif;
+
+    background: linear-gradient(180deg,
+        rgba(10, 4, 22, 0.92) 0%,
+        rgba(18, 6, 38, 0.97) 100%
+    );
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(140, 60, 220, 0.25);
+    border-radius: 50px;
+
+    box-shadow:
+        0 8px 32px rgba(125, 59, 246, 0.15),
+        inset 0 0 40px rgba(150, 60, 255, 0.04);
+
+    overflow: hidden;
 }
 
-/* LEFT */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(185, 100, 255, 0.8) 50%,
+        transparent 100%
+    );
+
+    animation: glowSweep 4s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes glowSweep {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.7); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .nav-left img {
-    height: 35px;
+    height: 36px;
+    filter: drop-shadow(0 0 6px rgba(185, 100, 255, 0.4));
 }
 
 .nav-left span {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    letter-spacing: 1px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: rgb(220, 175, 255);
+    text-shadow: 0 0 18px rgba(185, 100, 255, 0.5);
 }
 
-/* MIDDLE */
 .nav-middle {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .nav-middle a {
-    color: #9ca3af;
+    position: relative;
+
+    color: rgba(200, 170, 230, 0.5);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+
     padding: 8px 20px;
-    border-radius: 20px;
-    transition: all 0.2s;
+    border-radius: 25px;
+
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .nav-middle a:hover {
-    color: white;
-    background: #1e1340;
+    color: rgb(220, 175, 255);
+    border-color: rgba(185, 100, 255, 0.35);
+    background: rgba(185, 100, 255, 0.06);
+    text-shadow: 0 0 10px rgba(185, 100, 255, 0.4);
+    transform: translateY(-1px);
 }
 
 .nav-middle a.active {
-    color: white;
-    background: #7d3bf6;
+    color: rgb(220, 175, 255);
+    background: rgba(185, 100, 255, 0.12);
+    border-color: rgba(185, 100, 255, 0.45);
+    box-shadow: 0 0 15px rgba(185, 100, 255, 0.25);
 }
 
-/* RIGHT */
 .nav-right {
     position: relative;
 }
@@ -68,31 +122,44 @@
 .user-profile {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: #9ca3af;
+    gap: 10px;
+
+    color: rgba(200, 170, 230, 0.5);
     text-decoration: none;
-    font-size: 16px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid #2d1f5e;
-    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 300;
+
+    padding: 6px 16px;
+    border-radius: 25px;
+
+    border: 1px solid rgba(185, 100, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 .user-profile:hover {
-    color: white;
-    border-color: #7d3bf6;
-    background: #1e1340;
+    color: rgb(220, 175, 255);
+    border-color: rgba(185, 100, 255, 0.45);
+    background: rgba(185, 100, 255, 0.08);
+    box-shadow: 0 0 15px rgba(185, 100, 255, 0.2);
 }
 
 .user-avatar {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background: #7d3bf6;
+
+    background: linear-gradient(135deg,
+        rgb(150, 60, 255),
+        rgb(220, 160, 255)
+    );
+
     color: white;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 600;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    box-shadow: 0 0 12px rgba(185, 100, 255, 0.5);
 }
