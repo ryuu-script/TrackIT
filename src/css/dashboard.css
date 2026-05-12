@@ -105,7 +105,7 @@ body {
 .header-badge .dot {
     width: 8px;
     height: 8px;
-    background: var(--added);
+    background: var(--purple-light);
     border-radius: 50%;
     flex-shrink: 0;
     animation: pulse 2s infinite;

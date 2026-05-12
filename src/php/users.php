@@ -1,4 +1,3 @@
-```php
 <?php
 session_start();
 require_once '../php/component/db_connect.php';
@@ -19,10 +18,22 @@ $isAdmin = $current_user['role'] === 'admin';
 if ($isAdmin && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['add_user'])) {
-        $username = trim($_POST['username']);
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $role = $_POST['role'];
 
+    $username = trim($_POST['username']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $role = $_POST['role'];
+
+    // CHECK FIRST (prevents unnecessary insert attempt)
+    $check = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+    $check->execute([$username]);
+
+    if ($check->fetch()) {
+        $_SESSION['error'] = "Username already exists.";
+        header('Location: users.php');
+        exit();
+    }
+
+    try {
         $stmt = $pdo->prepare("
             INSERT INTO users (username, password, role)
             VALUES (?, ?, ?)
@@ -30,9 +41,16 @@ if ($isAdmin && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->execute([$username, $password, $role]);
 
-        header('Location: users.php');
-        exit();
+        $_SESSION['success'] = "User created successfully.";
+
+    } catch (PDOException $e) {
+        // fallback safety (in case race condition happens)
+        $_SESSION['error'] = "Username already exists.";
     }
+
+    header('Location: users.php');
+    exit();
+}
 
     if (isset($_POST['delete_user'])) {
 
@@ -105,29 +123,27 @@ $users = $pdo->query("
         content="width=device-width, initial-scale=1.0"
     >
 
-    <link
-        href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
-        rel='stylesheet'
-    >
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/TrackIT/src/css/navbar.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/TrackIT/src/css/users.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/TrackIT/src/css/navbar.css">
+    <link rel="stylesheet" href="/TrackIT/src/css/users.css">
 
     <title>TrackIT | Users</title>
 
 </head>
+
+<?php if (isset($_SESSION['error'])): ?>
+    <p style="color:red;">
+        <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+    </p>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['success'])): ?>
+    <p style="color:green;">
+        <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+    </p>
+<?php endif; ?>
 
 <body>
 
@@ -365,6 +381,7 @@ $users = $pdo->query("
                             type="submit"
                             name="add_user"
                             class="users-save-btn"
+                            id="createUserBtn"
                         >
                             Create User
                         </button>
@@ -473,5 +490,7 @@ $users = $pdo->query("
     <script src="/TrackIT/src/js/users.js"></script>
 
 </body>
+
+<?php require_once __DIR__ . '/component/footer.php'; ?>
+
 </html>
-```
