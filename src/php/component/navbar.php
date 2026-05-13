@@ -21,7 +21,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <div class="nav-right">
-        <a href="settings.php" class="user-profile">
+        <a href="/TrackIT/src/php/settings.php" class="user-profile">
             <div class="user-avatar"><?= strtoupper(substr($_SESSION['username'], 0, 1)) ?></div>
             <span><?= $_SESSION['username'] ?></span>
             <i class='bx bxs-chevron-right'></i>
